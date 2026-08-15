@@ -432,7 +432,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   background: var(--blanco); box-shadow: var(--sombra);
   -webkit-overflow-scrolling: touch;
 }
-.tabla-obras { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 940px; }
+.tabla-obras { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 1040px; }
 
 .tabla-obras thead th {
   background: var(--azul); color: var(--blanco);
