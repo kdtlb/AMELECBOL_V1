@@ -1,0 +1,723 @@
+/* ==========================================================================
+   AMELECBOL S.R.L. — Hoja de estilos
+   Construida sobre el Manual de Marca (secciones A.06 colores, A.07 tipografía,
+   A.08 elementos de marca).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TOKENS DE MARCA
+   -------------------------------------------------------------------------- */
+:root {
+  /* A.06 — Colores primarios */
+  --azul:            #263168;   /* Pantone P 103-8 C */
+  --amarillo:        #fcbf0a;   /* Pantone P 10-8 C  */
+
+  /* A.06.1 — Colores secundarios */
+  --azul-sec:        #1f4e8b;   /* Pantone P 105-15 C */
+  --gris:            #3c3c3b;   /* Pantone P 179-14   */
+
+  /* A.06.2 — Color complementario */
+  --gris-claro:      #f6f6f6;   /* Pantone 663 C */
+
+  /* Derivados de apoyo (no sustituyen a los del manual) */
+  --azul-900:        #1b2450;
+  --azul-050:        #eef1f8;
+  --amarillo-oscuro: #e0a800;
+  --blanco:          #ffffff;
+  --texto:           #33343a;
+  --texto-suave:     #5f6270;
+  --borde:           #e3e6ee;
+
+  /* A.07 — Tipografía. El manual establece Helvetica Neue para toda
+     comunicación fuera del imagotipo. */
+  --fuente: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Liberation Sans", sans-serif;
+
+  /* Escala y ritmo */
+  --ancho:    1200px;
+  --radio:    10px;
+  --radio-sm: 6px;
+  --sombra:      0 1px 3px rgba(38, 49, 104, .06), 0 8px 24px rgba(38, 49, 104, .07);
+  --sombra-alta: 0 4px 12px rgba(38, 49, 104, .10), 0 18px 44px rgba(38, 49, 104, .14);
+  --transicion: .28s cubic-bezier(.4, 0, .2, 1);
+
+  --nav-h: 90px;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET Y BASE
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente);
+  font-size: 17px;
+  line-height: 1.68;
+  color: var(--texto);
+  background: var(--blanco);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a   { color: var(--azul-sec); text-decoration: none; transition: color var(--transicion); }
+a:hover { color: var(--azul); }
+
+h1, h2, h3, h4 {
+  margin: 0 0 .55em;
+  line-height: 1.18;
+  letter-spacing: -.015em;
+  color: var(--azul);
+  font-weight: 700;
+}
+p { margin: 0 0 1.1em; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+:focus-visible {
+  outline: 3px solid var(--amarillo);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.container { width: 100%; max-width: var(--ancho); margin-inline: auto; padding-inline: 24px; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute; left: 16px; top: -60px; z-index: 999;
+  background: var(--amarillo); color: var(--azul); font-weight: 700;
+  padding: 10px 18px; border-radius: var(--radio-sm); transition: top var(--transicion);
+}
+.skip-link:focus { top: 12px; }
+
+/* --------------------------------------------------------------------------
+   3. TIPOGRAFÍA DE SECCIÓN
+   -------------------------------------------------------------------------- */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin: 0 0 14px;
+  font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--azul-sec);
+}
+/* A.08 — el círculo derivado del isotipo abre los títulos y párrafos clave */
+.eyebrow::before {
+  content: ""; width: 11px; height: 11px; border-radius: 50%;
+  border: 2.5px solid var(--amarillo); flex: none;
+}
+.eyebrow--claro { color: var(--amarillo); }
+.eyebrow--claro::before { border-color: var(--amarillo); }
+
+.titulo {
+  font-size: clamp(1.85rem, 3.4vw, 2.7rem);
+  margin-bottom: .5em;
+}
+.titulo--claro { color: var(--blanco); }
+
+.acento { color: var(--amarillo); }
+
+.seccion { padding: clamp(64px, 8vw, 108px) 0; }
+.seccion--gris { background: var(--gris-claro); }
+
+.seccion__cab { max-width: 720px; margin-bottom: clamp(40px, 5vw, 62px); }
+.seccion__intro { font-size: 1.08rem; color: var(--texto-suave); margin-bottom: 0; }
+.seccion__cab--claro .seccion__intro { color: rgba(255,255,255,.78); }
+
+.nota {
+  margin-top: 20px; font-size: .875rem; color: var(--texto-suave); max-width: 760px;
+}
+
+/* --------------------------------------------------------------------------
+   4. BOTONES
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 15px 30px;
+  font-family: inherit; font-size: 1rem; font-weight: 700; line-height: 1;
+  border: 2px solid transparent; border-radius: var(--radio-sm);
+  cursor: pointer; text-align: center; white-space: nowrap;
+  transition: background var(--transicion), color var(--transicion),
+              border-color var(--transicion), transform var(--transicion),
+              box-shadow var(--transicion);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+.btn--amarillo {
+  background: var(--amarillo); color: var(--azul); border-color: var(--amarillo);
+  box-shadow: 0 4px 16px rgba(252, 191, 10, .30);
+}
+.btn--amarillo:hover {
+  background: var(--amarillo-oscuro); border-color: var(--amarillo-oscuro); color: var(--azul);
+  box-shadow: 0 8px 24px rgba(252, 191, 10, .40);
+}
+
+.btn--fantasma { background: transparent; color: var(--blanco); border-color: rgba(255,255,255,.45); }
+.btn--fantasma:hover { background: rgba(255,255,255,.10); border-color: var(--blanco); color: var(--blanco); }
+
+.btn--wsp { background: #25d366; color: #0b3d21; border-color: #25d366; }
+.btn--wsp:hover { background: #1eb457; border-color: #1eb457; color: #08301a; }
+
+.btn--sm   { padding: 11px 22px; font-size: .94rem; }
+.btn--full { width: 100%; }
+
+/* --------------------------------------------------------------------------
+   5. BARRA SUPERIOR
+   -------------------------------------------------------------------------- */
+.topbar {
+  background: var(--azul-900); color: rgba(255,255,255,.80); font-size: .84rem;
+  position: relative; z-index: 60;
+}
+.topbar__in { display: flex; align-items: center; gap: 20px; min-height: 40px; flex-wrap: wrap; }
+.topbar__item { display: inline-flex; align-items: center; gap: 8px; }
+.topbar__item a { color: inherit; }
+.topbar__item a:hover { color: var(--amarillo); }
+.topbar__item svg { width: 15px; height: 15px; fill: var(--amarillo); flex: none; }
+.topbar__sep { width: 1px; height: 16px; background: rgba(255,255,255,.22); }
+.topbar__item--right { margin-left: auto; letter-spacing: .06em; text-transform: uppercase; font-size: .76rem; }
+
+/* --------------------------------------------------------------------------
+   6. NAVEGACIÓN
+   -------------------------------------------------------------------------- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: transparent;
+  transition: background var(--transicion), box-shadow var(--transicion);
+}
+.nav__in { display: flex; align-items: center; gap: 28px; min-height: var(--nav-h); }
+
+.nav__brand { position: relative; display: block; flex: none; }
+/* Tamaño mínimo para que el wordmark del imagotipo (A.01) siga siendo legible */
+.nav__logo {
+  width: auto; height: 56px;
+  transition: opacity var(--transicion);
+}
+.nav__logo--color { position: absolute; inset: 0; opacity: 0; }
+
+.nav__menu { display: flex; align-items: center; gap: 34px; margin-left: auto; }
+.nav__menu > a {
+  position: relative;
+  color: var(--blanco); font-weight: 500; font-size: 1rem;
+  transition: color var(--transicion);
+}
+.nav__menu > a:not(.btn)::after {
+  content: ""; position: absolute; left: 0; bottom: -7px;
+  width: 0; height: 2.5px; background: var(--amarillo);
+  transition: width var(--transicion);
+}
+.nav__menu > a:not(.btn):hover::after { width: 100%; }
+.nav__menu > a:not(.btn):hover { color: var(--amarillo); }
+
+/* Estado tras hacer scroll: fondo blanco, logo a color */
+.nav.is-scrolled { background: var(--blanco); box-shadow: 0 1px 0 var(--borde), 0 6px 22px rgba(38,49,104,.07); }
+.nav.is-scrolled .nav__logo--blanco { opacity: 0; }
+.nav.is-scrolled .nav__logo--color  { opacity: 1; }
+.nav.is-scrolled .nav__menu > a:not(.btn) { color: var(--azul); }
+.nav.is-scrolled .nav__menu > a:not(.btn):hover { color: var(--azul-sec); }
+.nav.is-scrolled .nav__toggle span { background: var(--azul); }
+
+.nav__toggle {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 44px; height: 44px; margin-left: auto;
+  background: none; border: 0; cursor: pointer; padding: 0;
+}
+.nav__toggle span {
+  display: block; width: 26px; height: 2.5px; border-radius: 2px;
+  background: var(--blanco); transition: transform var(--transicion), opacity var(--transicion), background var(--transicion);
+}
+.nav__toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.nav__toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* --------------------------------------------------------------------------
+   7. HERO
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  margin-top: calc(var(--nav-h) * -1);
+  padding: calc(var(--nav-h) + clamp(72px, 10vw, 132px)) 0 clamp(112px, 12vw, 168px);
+  background: linear-gradient(125deg, var(--azul-900) 0%, var(--azul) 52%, var(--azul-sec) 128%);
+  color: var(--blanco);
+}
+
+/* Retícula técnica de fondo */
+.hero__grid {
+  position: absolute; inset: 0; z-index: -2; opacity: .5;
+  background-image:
+    linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+  background-size: 68px 68px;
+  mask-image: radial-gradient(120% 100% at 30% 40%, #000 25%, transparent 78%);
+  -webkit-mask-image: radial-gradient(120% 100% at 30% 40%, #000 25%, transparent 78%);
+}
+
+/* A.08.1 — «Se utiliza el isotipo como fondo de marca de agua […] en una
+   opacidad de 5%». Se respeta al pie de la letra. */
+.hero__marca {
+  position: absolute; z-index: -1;
+  right: -6%; top: 50%; transform: translateY(-50%);
+  width: min(660px, 52vw); opacity: .05; pointer-events: none;
+}
+
+.hero__in { position: relative; max-width: 780px; }
+.hero__titulo {
+  font-size: clamp(2.3rem, 5.4vw, 4rem);
+  color: var(--blanco); margin-bottom: .38em; letter-spacing: -.025em;
+}
+.hero__texto {
+  font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+  color: rgba(255,255,255,.84); max-width: 640px; margin-bottom: 2.2em;
+}
+.hero__acciones { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* --------------------------------------------------------------------------
+   8. INDICADORES
+   -------------------------------------------------------------------------- */
+.stats { margin-top: clamp(-92px, -8vw, -64px); position: relative; z-index: 5; }
+.stats__caja {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-alta);
+  overflow: hidden;
+}
+.stat {
+  padding: 34px 26px; text-align: center;
+  border-right: 1px solid var(--borde);
+}
+.stat:last-child { border-right: 0; }
+.stat__num {
+  display: block;
+  font-size: clamp(2rem, 3.4vw, 2.9rem); font-weight: 700; line-height: 1;
+  color: var(--azul); letter-spacing: -.03em; margin-bottom: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.stat__lbl {
+  display: block; font-size: .875rem; color: var(--texto-suave);
+  letter-spacing: .02em;
+}
+
+/* --------------------------------------------------------------------------
+   9. NOSOTROS
+   -------------------------------------------------------------------------- */
+.nosotros {
+  display: grid; grid-template-columns: 1.35fr .95fr; gap: clamp(36px, 5vw, 72px);
+  align-items: start;
+}
+.nosotros__texto p { color: var(--texto-suave); }
+
+.lista-check { margin-top: 30px; display: grid; gap: 15px; }
+.lista-check li {
+  position: relative; padding-left: 38px; font-weight: 500; color: var(--texto);
+}
+.lista-check li::before {
+  content: ""; position: absolute; left: 0; top: 3px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--amarillo);
+}
+.lista-check li::after {
+  content: ""; position: absolute; left: 7.5px; top: 9.5px;
+  width: 7px; height: 3.5px;
+  border-left: 2.5px solid var(--azul); border-bottom: 2.5px solid var(--azul);
+  transform: rotate(-45deg);
+}
+
+.nosotros__tarjeta {
+  position: relative; overflow: hidden;
+  background: var(--azul); color: var(--blanco);
+  border-radius: var(--radio); padding: 42px 38px;
+  box-shadow: var(--sombra);
+}
+.nosotros__tarjeta h3 { color: var(--blanco); font-size: 1.4rem; }
+.nosotros__tarjeta p { color: rgba(255,255,255,.82); margin-bottom: 0; }
+/* Isotipo en versión negativa como sello decorativo de la tarjeta.
+   La regla estricta del 5% (A.08.1) se aplica a las marcas de agua de fondo
+   completo — ver .hero__marca y .diferencial__marca. */
+.nosotros__iso {
+  position: absolute; right: 24px; bottom: 24px;
+  width: 132px; opacity: .10; pointer-events: none;
+}
+.nosotros__firma {
+  margin-top: 30px; padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,.20);
+}
+.nosotros__firma-nom { display: block; font-weight: 700; color: var(--amarillo); }
+.nosotros__firma-cgo { display: block; font-size: .875rem; color: rgba(255,255,255,.66); }
+
+/* --------------------------------------------------------------------------
+   10. SERVICIOS
+   -------------------------------------------------------------------------- */
+.servicios { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+.servicio {
+  position: relative;
+  background: var(--blanco); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 38px 30px 34px;
+  transition: transform var(--transicion), box-shadow var(--transicion), border-color var(--transicion);
+}
+.servicio::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px;
+  background: var(--amarillo);
+  border-radius: var(--radio) var(--radio) 0 0;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--transicion);
+}
+.servicio:hover { transform: translateY(-6px); box-shadow: var(--sombra-alta); border-color: transparent; }
+.servicio:hover::before { transform: scaleX(1); }
+
+/* A.08 — círculo de marca como contenedor del ícono */
+.servicio__icono {
+  display: grid; place-items: center;
+  width: 68px; height: 68px; margin-bottom: 24px;
+  border: 2.5px solid var(--azul-sec); border-radius: 50%;
+  transition: background var(--transicion), border-color var(--transicion);
+}
+.servicio__icono svg {
+  width: 34px; height: 34px;
+  fill: none; stroke: var(--azul); stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+  transition: stroke var(--transicion);
+}
+.servicio:hover .servicio__icono { background: var(--azul); border-color: var(--azul); }
+.servicio:hover .servicio__icono svg { stroke: var(--amarillo); }
+
+.servicio h3 { font-size: 1.14rem; margin-bottom: .55em; }
+.servicio p  { font-size: .95rem; color: var(--texto-suave); margin-bottom: 0; }
+
+/* --------------------------------------------------------------------------
+   11. PROPUESTA DIFERENCIAL
+   -------------------------------------------------------------------------- */
+.diferencial {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: clamp(64px, 8vw, 104px) 0;
+  background: linear-gradient(115deg, var(--azul) 0%, var(--azul-900) 100%);
+  color: var(--blanco);
+}
+.diferencial__marca {
+  position: absolute; z-index: -1; left: -5%; top: 50%; transform: translateY(-50%);
+  width: min(520px, 44vw); opacity: .05; pointer-events: none;
+}
+.diferencial__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+.dif {
+  padding: 32px 30px;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: var(--radio);
+  transition: background var(--transicion), border-color var(--transicion), transform var(--transicion);
+}
+.dif:hover { background: rgba(255,255,255,.09); border-color: rgba(252,191,10,.5); transform: translateY(-5px); }
+.dif__num {
+  display: block; font-size: 2.1rem; font-weight: 700; line-height: 1;
+  color: var(--amarillo); margin-bottom: 18px; letter-spacing: -.03em;
+}
+.dif h3 { color: var(--blanco); font-size: 1.16rem; }
+.dif p  { color: rgba(255,255,255,.76); font-size: .95rem; margin-bottom: 0; }
+
+/* --------------------------------------------------------------------------
+   12. TABLA DE OBRAS
+   -------------------------------------------------------------------------- */
+.tabla-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--borde); border-radius: var(--radio);
+  background: var(--blanco); box-shadow: var(--sombra);
+  -webkit-overflow-scrolling: touch;
+}
+.tabla-obras { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 940px; }
+
+.tabla-obras thead th {
+  background: var(--azul); color: var(--blanco);
+  text-align: left; font-weight: 700; font-size: .78rem;
+  letter-spacing: .09em; text-transform: uppercase;
+  padding: 16px 18px; white-space: nowrap;
+}
+.tabla-obras tbody td { padding: 17px 18px; border-top: 1px solid var(--borde); vertical-align: top; }
+.tabla-obras tbody tr { transition: background var(--transicion); }
+.tabla-obras tbody tr:hover { background: var(--azul-050); }
+.tabla-obras tbody td strong { color: var(--azul); font-weight: 700; }
+.tabla-obras .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+.tabla-obras tfoot td {
+  padding: 16px 18px; border-top: 2px solid var(--azul);
+  background: var(--gris-claro);
+  font-weight: 700; color: var(--azul); text-transform: uppercase;
+  font-size: .8rem; letter-spacing: .08em;
+}
+.tabla-obras tfoot .num { font-size: 1.02rem; letter-spacing: 0; }
+
+.pill {
+  display: inline-block; padding: 5px 13px; border-radius: 999px;
+  background: rgba(252,191,10,.16); color: #8a6400;
+  font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   13. CLIENTES
+   -------------------------------------------------------------------------- */
+.clientes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.cliente {
+  display: flex; align-items: center; gap: 14px;
+  padding: 24px 24px;
+  background: var(--blanco); border: 1px solid var(--borde); border-radius: var(--radio);
+  font-weight: 700; color: var(--azul); font-size: 1rem;
+  transition: transform var(--transicion), box-shadow var(--transicion), border-color var(--transicion);
+}
+.cliente:hover { transform: translateY(-4px); box-shadow: var(--sombra); border-color: var(--amarillo); }
+/* A.08 — círculo de marca */
+.cliente__pto {
+  width: 15px; height: 15px; border-radius: 50%; flex: none;
+  border: 3px solid var(--amarillo);
+}
+.cliente:nth-child(2) .cliente__pto,
+.cliente:nth-child(6) .cliente__pto { border-color: var(--azul-sec); }
+.cliente:nth-child(3) .cliente__pto,
+.cliente:nth-child(7) .cliente__pto { border-color: var(--gris); }
+
+/* --------------------------------------------------------------------------
+   14. MISIÓN / VISIÓN
+   -------------------------------------------------------------------------- */
+.mv { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.mv__caja {
+  position: relative;
+  padding: 44px 40px;
+  border-radius: var(--radio);
+  background: var(--gris-claro);
+  border-left: 5px solid var(--amarillo);
+}
+.mv__caja--vision { border-left-color: var(--azul-sec); }
+.mv__caja h2 { font-size: 1.55rem; margin-bottom: .5em; }
+.mv__caja p  { color: var(--texto-suave); margin-bottom: 0; }
+.mv__circulo {
+  position: absolute; right: 30px; top: 34px;
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 4px solid rgba(252,191,10,.32);
+}
+.mv__caja--vision .mv__circulo { border-color: rgba(31,78,139,.26); }
+
+/* --------------------------------------------------------------------------
+   15. CONTACTO
+   -------------------------------------------------------------------------- */
+.contacto {
+  background: linear-gradient(135deg, var(--azul-900) 0%, var(--azul) 62%, var(--azul-sec) 135%);
+  color: var(--blanco);
+}
+.contacto__in { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 5vw, 66px); align-items: start; }
+.contacto__lead { color: rgba(255,255,255,.80); font-size: 1.06rem; margin-bottom: 2em; }
+
+.contacto__datos { display: grid; gap: 22px; margin-bottom: 34px; }
+.contacto__datos li { display: flex; align-items: flex-start; gap: 16px; }
+.contacto__ico {
+  display: grid; place-items: center; flex: none;
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.26);
+}
+.contacto__ico svg { width: 21px; height: 21px; fill: var(--amarillo); }
+.contacto__rot {
+  display: block; font-size: .76rem; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.55); margin-bottom: 3px;
+}
+.contacto__datos a { color: var(--blanco); font-weight: 700; font-size: 1.05rem; }
+.contacto__datos a:hover { color: var(--amarillo); }
+.contacto__datos li > span:last-child { font-weight: 700; font-size: 1.05rem; }
+
+/* Formulario */
+.contacto__form-caja {
+  background: var(--blanco); border-radius: var(--radio);
+  padding: clamp(28px, 3.4vw, 42px);
+  box-shadow: var(--sombra-alta);
+}
+.form__titulo {
+  font-size: 1.3rem; font-weight: 700; color: var(--azul);
+  margin: 0 0 24px; padding-bottom: 16px; border-bottom: 1px solid var(--borde);
+}
+.form__campo { margin-bottom: 18px; }
+.form__fila  { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form__campo label {
+  display: block; margin-bottom: 7px;
+  font-size: .84rem; font-weight: 700; color: var(--azul); letter-spacing: .02em;
+}
+.form__campo label span { color: var(--amarillo-oscuro); }
+.form__campo input,
+.form__campo select,
+.form__campo textarea {
+  width: 100%; padding: 13px 15px;
+  font-family: inherit; font-size: .97rem; color: var(--texto);
+  background: var(--blanco);
+  border: 1.5px solid var(--borde); border-radius: var(--radio-sm);
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+.form__campo textarea { resize: vertical; min-height: 108px; }
+.form__campo input:focus,
+.form__campo select:focus,
+.form__campo textarea:focus {
+  outline: none; border-color: var(--azul-sec);
+  box-shadow: 0 0 0 3px rgba(31,78,139,.13);
+}
+.form__campo input.is-error,
+.form__campo textarea.is-error { border-color: #d64545; box-shadow: 0 0 0 3px rgba(214,69,69,.12); }
+.form__nota { margin: 14px 0 0; font-size: .875rem; min-height: 1.4em; text-align: center; color: var(--texto-suave); }
+.form__nota.is-ok  { color: #1a7a45; font-weight: 700; }
+.form__nota.is-err { color: #c23434; font-weight: 700; }
+
+/* --------------------------------------------------------------------------
+   16. PIE DE PÁGINA
+   -------------------------------------------------------------------------- */
+.pie { background: var(--azul-900); color: rgba(255,255,255,.68); font-size: .93rem; }
+.pie__in {
+  display: grid; grid-template-columns: 1.7fr 1fr 1.25fr 1fr; gap: 44px;
+  padding-top: clamp(52px, 6vw, 72px); padding-bottom: clamp(40px, 5vw, 56px);
+}
+.pie__logo { height: 52px; width: auto; margin-bottom: 22px; }
+.pie__slogan { max-width: 360px; margin-bottom: 0; line-height: 1.65; }
+.pie__col h3 {
+  color: var(--blanco); font-size: .82rem; font-weight: 700;
+  letter-spacing: .13em; text-transform: uppercase; margin-bottom: 20px;
+}
+.pie__col ul { display: grid; gap: 11px; }
+.pie__col a { color: rgba(255,255,255,.68); }
+.pie__col a:hover { color: var(--amarillo); }
+
+.pie__legal { border-top: 1px solid rgba(255,255,255,.10); }
+.pie__legal-in {
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;
+  padding-top: 20px; padding-bottom: 20px;
+  font-size: .84rem; color: rgba(255,255,255,.48);
+}
+.pie__legal-in p { margin: 0; }
+
+/* --------------------------------------------------------------------------
+   17. BOTÓN FLOTANTE DE WHATSAPP
+   -------------------------------------------------------------------------- */
+.wsp-flot {
+  position: fixed; right: 22px; bottom: 22px; z-index: 80;
+  display: grid; place-items: center;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25d366; box-shadow: 0 6px 22px rgba(37,211,102,.42);
+  transition: transform var(--transicion), box-shadow var(--transicion);
+}
+.wsp-flot svg { width: 30px; height: 30px; fill: #fff; }
+.wsp-flot:hover { transform: scale(1.08); box-shadow: 0 10px 30px rgba(37,211,102,.55); }
+
+/* --------------------------------------------------------------------------
+   18. ANIMACIÓN DE APARICIÓN
+   -------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0; transform: translateY(26px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* --------------------------------------------------------------------------
+   19. RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .servicios { grid-template-columns: repeat(2, 1fr); }
+  .clientes  { grid-template-columns: repeat(3, 1fr); }
+  .pie__in   { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .pie__col--marca { grid-column: 1 / -1; }
+}
+
+@media (max-width: 900px) {
+  :root { --nav-h: 70px; }
+
+  .nav__toggle { display: flex; }
+  .nav__menu {
+    position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--blanco);
+    box-shadow: 0 16px 34px rgba(38,49,104,.16);
+    padding: 10px 24px 24px;
+    max-height: 0; overflow: hidden; opacity: 0; visibility: hidden;
+    transition: max-height var(--transicion), opacity var(--transicion), visibility var(--transicion);
+  }
+  .nav__menu.is-open { max-height: 460px; opacity: 1; visibility: visible; }
+  .nav__menu > a { color: var(--azul); padding: 15px 0; border-bottom: 1px solid var(--borde); }
+  .nav__menu > a:not(.btn)::after { display: none; }
+  .nav__menu > a.btn { margin-top: 16px; border-bottom: 0; }
+  .nav.is-scrolled .nav__menu > a:not(.btn) { color: var(--azul); }
+
+  .stats__caja { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(2n) { border-right: 0; }
+  .stat:nth-child(-n+2) { border-bottom: 1px solid var(--borde); }
+
+  .nosotros, .contacto__in, .mv, .diferencial__grid { grid-template-columns: 1fr; }
+  .topbar__item--right { display: none; }
+}
+
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .servicios, .clientes { grid-template-columns: 1fr; }
+  .form__fila { grid-template-columns: 1fr; }
+  .hero__acciones .btn { flex: 1 1 100%; }
+  .hero__marca { width: 88vw; right: -28%; opacity: .045; }
+  .pie__in { grid-template-columns: 1fr; }
+  .mv__circulo { display: none; }
+
+  /* Tabla de obras → tarjetas apiladas */
+  .tabla-wrap { border: 0; box-shadow: none; background: transparent; overflow: visible; }
+  .tabla-obras { min-width: 0; }
+  .tabla-obras thead { display: none; }
+  .tabla-obras, .tabla-obras tbody, .tabla-obras tfoot,
+  .tabla-obras tr, .tabla-obras td { display: block; width: 100%; }
+  .tabla-obras tbody tr {
+    background: var(--blanco); border: 1px solid var(--borde);
+    border-radius: var(--radio); margin-bottom: 16px; padding: 8px 4px;
+    box-shadow: var(--sombra);
+  }
+  .tabla-obras tbody td {
+    display: flex; justify-content: space-between; gap: 18px;
+    border-top: 0; padding: 9px 18px; text-align: right;
+  }
+  .tabla-obras tbody td::before {
+    content: attr(data-lbl);
+    flex: none; text-align: left;
+    font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--texto-suave); padding-top: 3px;
+  }
+  .tabla-obras tbody td:first-child {
+    display: block; text-align: left;
+    border-bottom: 1px solid var(--borde); padding-bottom: 14px; margin-bottom: 6px;
+  }
+  .tabla-obras tbody td:first-child::before { display: none; }
+  .tabla-obras tfoot tr {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--gris-claro);
+    border: 1px solid var(--borde); border-top: 3px solid var(--azul);
+    border-radius: var(--radio); overflow: hidden;
+    padding: 6px 4px;
+  }
+  .tabla-obras tfoot td { border-top: 0; background: transparent; }
+  .tabla-obras tfoot td:empty { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   20. ACCESIBILIDAD Y IMPRESIÓN
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+@media print {
+  .topbar, .nav, .wsp-flot, .contacto__form-caja, .hero__grid, .hero__marca { display: none !important; }
+  body { font-size: 11pt; color: #000; }
+  .hero, .diferencial, .contacto, .pie { background: #fff !important; color: #000 !important; }
+  .hero__titulo, .titulo--claro, .dif h3 { color: var(--azul) !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .tabla-obras { min-width: 0; font-size: 9pt; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8pt; }
+}

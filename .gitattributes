@@ -1,0 +1,11 @@
+# Normaliza los finales de línea: LF dentro del repositorio,
+# nativos del sistema al trabajar en local. Evita diferencias falsas
+# cuando se edita el sitio desde Windows y desde la web de GitHub.
+* text=auto eol=lf
+
+# Binarios: que Git no intente convertirlos ni mostrarlos como texto
+*.png  binary
+*.ico  binary
+*.jpg  binary
+*.jpeg binary
+*.pdf  binary
