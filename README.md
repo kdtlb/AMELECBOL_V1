@@ -5,63 +5,33 @@ Una sola página, en HTML, CSS y JavaScript puros: **sin frameworks, sin depende
 y sin ninguna petición a servidores externos**. Todo lo que necesita está en este
 repositorio, así que funciona igual en GitHub Pages que en cualquier otro hosting.
 
-Esta carpeta está lista para publicarse tal cual. No requiere compilación.
-Ya es un repositorio Git con el primer commit hecho sobre la rama `main`:
-solo falta enlazarlo con GitHub y activar Pages.
+Repositorio: <https://github.com/kdtlb/AMELECBOL_V1>
 
 ---
 
-## Publicar en GitHub Pages
+## Estado de la publicación
 
-### Opción A — desde la terminal (recomendada, el repositorio ya está listo)
+El código **ya está subido** a GitHub, en la rama `main`. Falta un único paso,
+que solo puede hacerse desde la interfaz de GitHub:
 
-1. Crear un repositorio **vacío** en <https://github.com/new>.
-   - Nombre sugerido: `amelecbol`.
-   - Marcar **Public**. GitHub Pages gratuito requiere que sea público.
-   - **No** marcar «Add a README file», «Add .gitignore» ni «Choose a license»:
-     este repositorio ya trae todo eso y se generaría un conflicto.
-2. Ejecutar dentro de esta carpeta, reemplazando `USUARIO` y `REPOSITORIO`:
+### Activar GitHub Pages
 
-   ```bash
-   git remote add origin https://github.com/USUARIO/REPOSITORIO.git
-   git push -u origin main
-   ```
-
-3. Ir a **Settings → Pages**. En «Build and deployment»:
+1. Entrar a <https://github.com/kdtlb/AMELECBOL_V1/settings/pages>
+2. En «Build and deployment»:
    - Source: **Deploy from a branch**
-   - Branch: **main** · carpeta **/ (root)** · **Save**
-4. Esperar entre 1 y 3 minutos. El sitio queda en:
+   - Branch: **main** · carpeta **/ (root)**
+   - Pulsar **Save**
+3. Esperar entre 1 y 3 minutos. El sitio queda publicado en:
 
    ```
-   https://USUARIO.github.io/amelecbol/
+   https://kdtlb.github.io/AMELECBOL_V1/
    ```
 
-### Opción B — desde la web de GitHub (sin usar la terminal)
-
-1. Entrar a <https://github.com/new> y crear un repositorio.
-   - Nombre sugerido: `amelecbol` (o `amelecbol-web`).
-   - Marcar **Public**. GitHub Pages gratuito requiere que el repositorio sea público.
-   - **No** marcar «Add a README file»: este repositorio ya trae uno.
-2. En el repositorio recién creado, hacer clic en **uploading an existing file**.
-3. Arrastrar **el contenido de esta carpeta** (no la carpeta en sí): `index.html`,
-   `404.html`, `robots.txt`, y las carpetas `css/`, `js/` y `assets/`.
-   > El explorador de Windows oculta los archivos que empiezan con punto.
-   > Antes de arrastrar, activar **Vista → Elementos ocultos** para que se suban
-   > también `.nojekyll`, `.gitignore` y `.gitattributes`. El archivo `.nojekyll`
-   > es importante: sin él, GitHub intenta procesar el sitio con Jekyll.
-   >
-   > **No arrastrar la carpeta `.git`.** Es el historial local del repositorio y
-   > no debe subirse como archivos. (Si se usa la Opción A no hay que preocuparse:
-   > `git push` la maneja correctamente.)
-4. Escribir un mensaje de commit («Sitio inicial») y pulsar **Commit changes**.
-5. Ir a **Settings → Pages**. En «Build and deployment»:
-   - Source: **Deploy from a branch**
-   - Branch: **main** · carpeta **/ (root)** · **Save**
-6. Esperar entre 1 y 3 minutos. El sitio queda en:
-
-   ```
-   https://USUARIO.github.io/amelecbol/
-   ```
+> **Sobre la ruta.** Al ser un repositorio de proyecto, el sitio no vive en la raíz
+> del dominio sino en `/AMELECBOL_V1/`. Todas las rutas del `index.html` son
+> relativas, así que funcionan sin cambios. La única excepción es el botón «Volver
+> al inicio» de `404.html`, que necesita la ruta absoluta y por eso apunta a
+> `/AMELECBOL_V1/`. Si algún día se usa un dominio propio, hay que cambiarlo a `/`.
 
 ### Actualizaciones posteriores
 
@@ -88,9 +58,11 @@ Si en algún momento contratan un dominio como `amelecbol.com`:
 2. En el panel del proveedor del dominio, apuntar los registros DNS a GitHub:
    - Registros `A` de `@` → `185.199.108.153`, `185.199.109.153`,
      `185.199.110.153`, `185.199.111.153`
-   - Registro `CNAME` de `www` → `USUARIO.github.io`
+   - Registro `CNAME` de `www` → `kdtlb.github.io`
 3. En **Settings → Pages**, escribir el dominio en «Custom domain» y activar
    **Enforce HTTPS** una vez que GitHub emita el certificado.
+4. Con dominio propio el sitio pasa a vivir en la raíz: cambiar en `404.html` el
+   enlace `href="/AMELECBOL_V1/"` por `href="/"`.
 
 ---
 
@@ -181,8 +153,8 @@ Otras reglas del manual aplicadas:
    por la ruta absoluta, y añadir debajo la dirección del sitio:
 
    ```html
-   <meta property="og:image" content="https://USUARIO.github.io/amelecbol/assets/logo-color.png">
-   <meta property="og:url"   content="https://USUARIO.github.io/amelecbol/">
+   <meta property="og:image" content="https://kdtlb.github.io/AMELECBOL_V1/assets/logo-color.png">
+   <meta property="og:url"   content="https://kdtlb.github.io/AMELECBOL_V1/">
    ```
 
 ---
