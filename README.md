@@ -6,12 +6,37 @@ y sin ninguna petición a servidores externos**. Todo lo que necesita está en e
 repositorio, así que funciona igual en GitHub Pages que en cualquier otro hosting.
 
 Esta carpeta está lista para publicarse tal cual. No requiere compilación.
+Ya es un repositorio Git con el primer commit hecho sobre la rama `main`:
+solo falta enlazarlo con GitHub y activar Pages.
 
 ---
 
 ## Publicar en GitHub Pages
 
-### Opción A — desde la web de GitHub (sin instalar nada)
+### Opción A — desde la terminal (recomendada, el repositorio ya está listo)
+
+1. Crear un repositorio **vacío** en <https://github.com/new>.
+   - Nombre sugerido: `amelecbol`.
+   - Marcar **Public**. GitHub Pages gratuito requiere que sea público.
+   - **No** marcar «Add a README file», «Add .gitignore» ni «Choose a license»:
+     este repositorio ya trae todo eso y se generaría un conflicto.
+2. Ejecutar dentro de esta carpeta, reemplazando `USUARIO` y `REPOSITORIO`:
+
+   ```bash
+   git remote add origin https://github.com/USUARIO/REPOSITORIO.git
+   git push -u origin main
+   ```
+
+3. Ir a **Settings → Pages**. En «Build and deployment»:
+   - Source: **Deploy from a branch**
+   - Branch: **main** · carpeta **/ (root)** · **Save**
+4. Esperar entre 1 y 3 minutos. El sitio queda en:
+
+   ```
+   https://USUARIO.github.io/amelecbol/
+   ```
+
+### Opción B — desde la web de GitHub (sin usar la terminal)
 
 1. Entrar a <https://github.com/new> y crear un repositorio.
    - Nombre sugerido: `amelecbol` (o `amelecbol-web`).
@@ -22,8 +47,12 @@ Esta carpeta está lista para publicarse tal cual. No requiere compilación.
    `404.html`, `robots.txt`, y las carpetas `css/`, `js/` y `assets/`.
    > El explorador de Windows oculta los archivos que empiezan con punto.
    > Antes de arrastrar, activar **Vista → Elementos ocultos** para que se suban
-   > también `.nojekyll` y `.gitignore`. El archivo `.nojekyll` es importante:
-   > sin él, GitHub intenta procesar el sitio con Jekyll.
+   > también `.nojekyll`, `.gitignore` y `.gitattributes`. El archivo `.nojekyll`
+   > es importante: sin él, GitHub intenta procesar el sitio con Jekyll.
+   >
+   > **No arrastrar la carpeta `.git`.** Es el historial local del repositorio y
+   > no debe subirse como archivos. (Si se usa la Opción A no hay que preocuparse:
+   > `git push` la maneja correctamente.)
 4. Escribir un mensaje de commit («Sitio inicial») y pulsar **Commit changes**.
 5. Ir a **Settings → Pages**. En «Build and deployment»:
    - Source: **Deploy from a branch**
@@ -33,20 +62,6 @@ Esta carpeta está lista para publicarse tal cual. No requiere compilación.
    ```
    https://USUARIO.github.io/amelecbol/
    ```
-
-### Opción B — desde la terminal
-
-Ejecutar dentro de esta carpeta, reemplazando `USUARIO` y `REPOSITORIO`:
-
-```bash
-git init -b main
-git add -A
-git commit -m "Sitio inicial de Amelecbol S.R.L."
-git remote add origin https://github.com/USUARIO/REPOSITORIO.git
-git push -u origin main
-```
-
-Después, activar Pages siguiendo el paso 5 de la Opción A.
 
 ### Actualizaciones posteriores
 
@@ -88,6 +103,7 @@ Si en algún momento contratan un dominio como `amelecbol.com`:
 ├── robots.txt          Permite la indexación por buscadores
 ├── .nojekyll           Indica a GitHub que publique los archivos sin procesarlos
 ├── .gitignore          Archivos temporales de Windows, macOS y editores
+├── .gitattributes      Normaliza los finales de línea entre Windows y GitHub
 ├── css/styles.css      Estilos, con los tokens del manual de marca al inicio
 ├── js/main.js          Menú móvil, contadores, animaciones y formulario
 └── assets/             Logotipos recortados y optimizados para web
