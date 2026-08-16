@@ -249,6 +249,36 @@ ul { margin: 0; padding: 0; list-style: none; }
   color: var(--blanco);
 }
 
+/* Fotografía de fondo — planta solar en terreno altiplánico.
+   El degradado de .hero queda debajo como respaldo mientras carga. */
+.hero__foto {
+  position: absolute; inset: 0; z-index: -4;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 55%;
+  pointer-events: none; user-select: none;
+}
+
+/* Velo de marca sobre la foto. Se mantiene ligero para que la fotografía
+   se lea con claridad; el contraste del texto blanco se sostiene con un
+   refuerzo radial localizado detrás del bloque de texto, no oscureciendo
+   toda la imagen. */
+.hero__velo {
+  position: absolute; inset: 0; z-index: -3; pointer-events: none;
+  background:
+    /* 1. Refuerzo local bajo el titular (izquierda) */
+    radial-gradient(78% 118% at 14% 46%,
+      rgba(27, 36, 80, .58) 0%,
+      rgba(27, 36, 80, .30) 52%,
+      transparent 80%),
+    /* 2. Velo general de marca */
+    linear-gradient(115deg,
+      rgba(27, 36, 80, .56)  0%,
+      rgba(38, 49, 104, .40) 48%,
+      rgba(31, 78, 139, .26) 100%),
+    /* 3. Base inferior, para el empalme con la caja de indicadores */
+    linear-gradient(to top, rgba(27, 36, 80, .34), transparent 60%);
+}
+
 /* Retícula técnica de fondo */
 .hero__grid {
   position: absolute; inset: 0; z-index: -2; opacity: .5;
@@ -272,10 +302,14 @@ ul { margin: 0; padding: 0; list-style: none; }
 .hero__titulo {
   font-size: clamp(2.3rem, 5.4vw, 4rem);
   color: var(--blanco); margin-bottom: .38em; letter-spacing: -.025em;
+  /* Con el velo aligerado, la sombra garantiza el contraste sobre las
+     zonas más claras de la fotografía (cielo y terreno iluminado). */
+  text-shadow: 0 2px 18px rgba(15, 21, 48, .55);
 }
 .hero__texto {
   font-size: clamp(1.05rem, 1.6vw, 1.28rem);
-  color: rgba(255,255,255,.84); max-width: 640px; margin-bottom: 2.2em;
+  color: rgba(255,255,255,.92); max-width: 640px; margin-bottom: 2.2em;
+  text-shadow: 0 1px 12px rgba(15, 21, 48, .5);
 }
 .hero__acciones { display: flex; flex-wrap: wrap; gap: 14px; }
 
@@ -660,6 +694,17 @@ ul { margin: 0; padding: 0; list-style: none; }
   .form__fila { grid-template-columns: 1fr; }
   .hero__acciones .btn { flex: 1 1 100%; }
   .hero__marca { width: 88vw; right: -28%; opacity: .045; }
+  /* En vertical el texto cubre casi todo el ancho, así que el refuerzo
+     radial ya no sirve: se sustituye por un velo algo más parejo. */
+  .hero__foto { object-position: 50% 60%; }
+  .hero__velo {
+    background:
+      linear-gradient(160deg,
+        rgba(27, 36, 80, .70)  0%,
+        rgba(38, 49, 104, .58) 55%,
+        rgba(31, 78, 139, .46) 100%),
+      linear-gradient(to top, rgba(27, 36, 80, .34), transparent 60%);
+  }
   .pie__in { grid-template-columns: 1fr; }
   .mv__circulo { display: none; }
 
@@ -713,7 +758,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 @media print {
-  .topbar, .nav, .wsp-flot, .contacto__form-caja, .hero__grid, .hero__marca { display: none !important; }
+  .topbar, .nav, .wsp-flot, .contacto__form-caja,
+  .hero__grid, .hero__marca, .hero__foto, .hero__velo { display: none !important; }
   body { font-size: 11pt; color: #000; }
   .hero, .diferencial, .contacto, .pie { background: #fff !important; color: #000 !important; }
   .hero__titulo, .titulo--claro, .dif h3 { color: var(--azul) !important; }
