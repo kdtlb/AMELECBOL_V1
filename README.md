@@ -78,7 +78,9 @@ Si en algún momento contratan un dominio como `amelecbol.com`:
 ├── .gitattributes      Normaliza los finales de línea entre Windows y GitHub
 ├── css/styles.css      Estilos, con los tokens del manual de marca al inicio
 ├── js/main.js          Menú móvil, contadores, animaciones y formulario
-└── assets/             Logotipos recortados y optimizados para web
+└── assets/             Logotipos e imágenes optimizados para web
+    ├── hero-solar.jpg        Fotografía de fondo del hero (1920×1080)
+    ├── hero-solar-sm.jpg     La misma, versión móvil (1000×563)
     ├── logo-color.png        Imagotipo completo a color (A.01)
     ├── logo-blanco.png       Imagotipo completo, versión negativa
     ├── isotipo-blanco.png    Isotipo negativo — marca de agua del sitio
@@ -89,8 +91,21 @@ Si en algún momento contratan un dominio como `amelecbol.com`:
     └── favicon.ico / .png    Ícono de pestaña
 ```
 
-La página carga únicamente 6 archivos (HTML, CSS, JS y 3 imágenes). Los demás
-logotipos de `assets/` se incluyen como kit de marca para futuras piezas.
+La página carga 7 archivos (HTML, CSS, JS y 4 imágenes). Los demás logotipos de
+`assets/` se incluyen como kit de marca para futuras piezas.
+
+### Sobre la fotografía del hero
+
+`hero-solar.jpg` es una **imagen de banco, no una obra de Amelecbol**: una planta
+fotovoltaica en la Región de Antofagasta (Chile), elegida por su parecido con el
+terreno altiplánico. Autor: Antonio Garcia, vía Unsplash, bajo la [Licencia
+Unsplash](https://unsplash.com/license) — uso comercial permitido, sin atribución
+obligatoria. Original: <https://unsplash.com/photos/ndz_u1_tFZo>
+
+Se sirve en dos tamaños mediante `srcset`: en móvil se descargan 151 KB en lugar
+de 476 KB. Encima va `.hero__velo`, un degradado azul de marca que sostiene el
+contraste del texto blanco; sus opacidades son el único valor a tocar si se
+quiere la foto más o menos visible.
 
 ### Verlo en local antes de publicar
 
@@ -136,9 +151,10 @@ Otras reglas del manual aplicadas:
 2. **Dirección de oficina.** No constaba en la documentación. Hay un comentario
    `TODO` en la sección de contacto de `index.html`; por ahora el sitio muestra
    «Cobertura: Potosí · Chuquisaca · Tarija».
-3. **Fotografías de obra.** El sitio funciona sin imágenes, pero fotos reales de
-   las líneas construidas y del equipo en campo aumentarían mucho la credibilidad.
-   Los mejores lugares: el hero y una galería nueva antes de «Obras».
+3. **Fotografías de obra propias.** El hero usa hoy una imagen de banco (ver
+   arriba). Fotos reales de las líneas construidas y del equipo en campo
+   aumentarían mucho la credibilidad: bastaría reemplazar `hero-solar.jpg` por
+   una propia del mismo tamaño, y añadir una galería antes de «Obras».
 4. **Formulario de contacto.** Hoy abre el gestor de correo del visitante
    (`mailto:`), sin servidor. Para recibir los mensajes directamente, reemplazar el
    bloque 5 de `js/main.js` por un endpoint como Formspree o Web3Forms.
