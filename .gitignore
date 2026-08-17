@@ -17,3 +17,7 @@ $RECYCLE.BIN/
 # Temporales
 *.tmp
 *.bak
+
+# Originales sin optimizar de logotipos y fotografías.
+# Lo que publica el sitio son las versiones ya reducidas de media/.
+/img/
