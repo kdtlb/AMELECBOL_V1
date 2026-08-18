@@ -180,6 +180,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .topbar__in { display: flex; align-items: center; gap: 20px; min-height: 40px; flex-wrap: wrap; }
 .topbar__item { display: inline-flex; align-items: center; gap: 8px; }
 .topbar__item a { color: inherit; }
+/* En el correo el ícono va dentro del enlace, así que el enlace toma el gap */
+.topbar__item--correo a { display: inline-flex; align-items: center; gap: 8px; }
 .topbar__item a:hover { color: var(--amarillo); }
 .topbar__item svg { width: 15px; height: 15px; fill: var(--amarillo); flex: none; }
 .topbar__sep { width: 1px; height: 16px; background: rgba(255,255,255,.22); }
@@ -787,6 +789,16 @@ ul { margin: 0; padding: 0; list-style: none; }
   /* Sin la cobertura, son las redes las que se van al extremo derecho */
   .topbar__item--right, .topbar__sep--redes { display: none; }
   .topbar__redes { margin-left: auto; }
+}
+
+@media (max-width: 520px) {
+  .topbar__in { gap: 14px; flex-wrap: nowrap; }
+  .topbar__sep { display: none; }
+  .topbar__item--correo .topbar__txt {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  .topbar__item--correo a { width: 28px; height: 28px; justify-content: center; margin-block: -6px; }
 }
 
 @media (max-width: 640px) {

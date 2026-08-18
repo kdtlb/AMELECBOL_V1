@@ -288,3 +288,46 @@ visual de las líneas construidas respalda la tabla de obras que viene después.
 - Un único `<h1>`, jerarquía de encabezados correcta y metadatos completos.
 - Sin desbordamiento horizontal entre 360 px y 1440 px de ancho.
 - Sin errores en la consola del navegador.
+
+---
+
+## Criterio de mayúsculas en los términos técnicos
+
+A pedido del cliente, los nombres de servicio y tecnología llevan mayúscula
+inicial en todas las palabras significativas, en toda la página. Se extiende el
+criterio que el propio cliente ya usaba con «Generación Distribuida».
+
+Términos tratados así:
+
+Electrificación Rural · Redes de Distribución · Redes de Media y Baja Tensión ·
+Media Tensión · Baja Tensión · Líneas Eléctricas · Estudios de Demanda ·
+Energía Solar · Generación Solar · Generación Distribuida · Sistemas
+Fotovoltaicos · Paneles Solares · Paneles Fotovoltaicos · Productos Solares ·
+Materiales Eléctricos · Equipamiento Eléctrico · Infraestructura Eléctrica ·
+Almacenamiento Energético · Eficiencia Energética · Sistemas Híbridos
+
+**Quedan en minúscula** los adjetivos y sustantivos genéricos que no nombran una
+línea de servicio: «sector eléctrico», «proyecto eléctrico», «soluciones
+eléctricas», «energía eléctrica», «energía sostenible», «actas de entrega»,
+«alimentadores urbanos y rurales».
+
+Nota de estilo: la ortografía española reserva la mayúscula para nombres propios,
+de modo que en rigor estos términos irían en minúscula a mitad de frase. Es una
+convención tomada del inglés, habitual en comunicación corporativa técnica para
+destacar la oferta comercial. Se aplica porque el cliente lo pidió; si en algún
+momento se prefiere volver al criterio ortográfico estricto, basta con revertir
+esta lista.
+
+**Al redactar texto nuevo**, conviene respetar la lista para que la página no
+quede mezclada.
+
+### La barra superior en pantallas angostas
+
+El correo `amelecbol@gmail.com` es largo y, junto al teléfono y los dos iconos de
+redes, no cabía en una sola línea por debajo de unos 460 px: la barra se partía
+en dos de golpe. Por debajo de **520 px** el correo se reduce a su icono de
+sobre, que sigue abriendo el gestor de correo; la dirección completa continúa en
+el HTML, oculta solo a la vista, así que los lectores de pantalla la leen igual y
+sigue apareciendo en la sección de contacto y en el pie.
+
+Así la barra mide 40 px y ocupa una sola fila desde 320 px hasta escritorio.
