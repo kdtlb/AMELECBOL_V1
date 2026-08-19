@@ -79,8 +79,8 @@ Si en algún momento contratan un dominio como `amelecbol.com`:
 ├── css/styles.css      Estilos, con los tokens del manual de marca al inicio
 ├── js/main.js          Menú móvil, contadores, animaciones y formulario
 ├── assets/             Marca propia de Amelecbol e imagen del hero
-│   ├── hero-solar.jpg        Fotografía de fondo del hero (1920×1080)
-│   ├── hero-solar-sm.jpg     La misma, versión móvil (1000×563)
+│   ├── hero-solar-residencial.jpg     Fondo del hero (1920×1080)
+│   ├── hero-solar-residencial-sm.jpg  La misma, versión móvil (1000×562)
 │   ├── logo-color.png        Imagotipo completo a color (A.01)
 │   ├── logo-blanco.png       Imagotipo completo, versión negativa
 │   ├── isotipo-blanco.png    Isotipo negativo — marca de agua del sitio
@@ -137,16 +137,24 @@ en `.gitignore`); si hiciera falta regenerar `media/`, se parte de ellos.
 
 ### Sobre la fotografía del hero
 
-`hero-solar.jpg` es una **imagen de banco, no una obra de Amelecbol**: una planta
-fotovoltaica en la Región de Antofagasta (Chile), elegida por su parecido con el
-terreno altiplánico. Autor: Antonio Garcia, vía Unsplash, bajo la [Licencia
+`hero-solar-residencial.jpg` es una **imagen de banco, no una obra de Amelecbol**:
+vista de dron de una instalación fotovoltaica sobre el techo de una vivienda.
+Autor: Rafael Moreno (@rafamrn), vía Unsplash, bajo la [Licencia
 Unsplash](https://unsplash.com/license) — uso comercial permitido, sin atribución
-obligatoria. Original: <https://unsplash.com/photos/ndz_u1_tFZo>
+obligatoria. Original: <https://unsplash.com/photos/73JOOymZQTQ>
 
-Se sirve en dos tamaños mediante `srcset`: en móvil se descargan 151 KB en lugar
-de 476 KB. Encima va `.hero__velo`, un degradado azul de marca que sostiene el
+Sustituye a una planta solar a escala de servicio público que había antes: el
+cliente pidió que el hero mostrara **instalación solar residencial**, acorde con
+el foco comercial de la página. Se descargó a 2400 px y se reescaló a 1920 y
+1000 px con calidad 78.
+
+Se sirve en dos tamaños mediante `srcset`: los móviles de densidad 1× y 2×
+descargan 167 KB en lugar de 522 KB (a partir de 3× el navegador vuelve a pedir
+el archivo grande, porque 375 × 3 ya supera el corte de 1000 px). Encima va `.hero__velo`, un degradado azul de marca que sostiene el
 contraste del texto blanco; sus opacidades son el único valor a tocar si se
-quiere la foto más o menos visible.
+quiere la foto más o menos visible. El encuadre (`object-position`) está en
+`50% 45%` porque la foto es cenital y los paneles quedan algo por encima del
+centro; el valor anterior, `50% 55%`, buscaba un horizonte que aquí no existe.
 
 ### Verlo en local antes de publicar
 
@@ -229,11 +237,11 @@ visual de las líneas construidas respalda la tabla de obras que viene después.
 2. **Dirección de oficina.** No constaba en la documentación. Hay un comentario
    `TODO` en la sección de contacto de `index.html`; por ahora el sitio muestra
    «Cobertura: Potosí · Chuquisaca · Tarija».
-3. **Fotografía del hero.** La galería de `media/obras/` ya está publicada dentro
-   de la sección «Obras», pero el hero sigue usando una imagen de banco (ver
-   arriba). Si aparece una fotografía propia apaisada y de buena resolución,
-   basta con reemplazar `hero-solar.jpg` y `hero-solar-sm.jpg` por versiones del
-   mismo tamaño (1920×1080 y 1000×563).
+3. **Fotografía propia para el hero.** La imagen actual es de banco y muestra una
+   vivienda que no es de Amelecbol. Una instalación residencial propia sería más
+   convincente: basta reemplazar `hero-solar-residencial.jpg` y
+   `hero-solar-residencial-sm.jpg` por versiones del mismo tamaño (1920×1080 y
+   1000×562).
 4. **Formulario de contacto.** Hoy abre el gestor de correo del visitante
    (`mailto:`), sin servidor. Para recibir los mensajes directamente, reemplazar el
    bloque 5 de `js/main.js` por un endpoint como Formspree o Web3Forms.
