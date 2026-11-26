@@ -749,6 +749,12 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-size: .84rem; color: rgba(255,255,255,.48);
 }
 .pie__legal-in p { margin: 0; }
+.pie__credito {
+  margin: 0; padding: 0 0 20px; text-align: center;
+  font-size: .78rem; color: rgba(255,255,255,.40);
+}
+.pie__credito a { color: rgba(255,255,255,.65); font-weight: 700; }
+.pie__credito a:hover { color: var(--amarillo); }
 
 /* --------------------------------------------------------------------------
    17. BOTÓN FLOTANTE DE WHATSAPP
